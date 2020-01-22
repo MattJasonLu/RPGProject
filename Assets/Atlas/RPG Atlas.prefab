@@ -59,8 +59,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: button-loadgame
-    x: 790
-    y: 376
+    x: 665
+    y: 302
     width: 175
     height: 31
     borderLeft: 0
@@ -72,8 +72,8 @@ MonoBehaviour:
     paddingTop: 8
     paddingBottom: 12
   - name: button-loadgame-disable
-    x: 790
-    y: 344
+    x: 665
+    y: 270
     width: 175
     height: 31
     borderLeft: 0
@@ -85,8 +85,8 @@ MonoBehaviour:
     paddingTop: 8
     paddingBottom: 12
   - name: button-loadgame-down
-    x: 790
-    y: 408
+    x: 693
+    y: 334
     width: 183
     height: 39
     borderLeft: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
     paddingBottom: 8
   - name: button-newgame
     x: 0
-    y: 364
+    y: 292
     width: 167
     height: 31
     borderLeft: 0
@@ -111,8 +111,8 @@ MonoBehaviour:
     paddingTop: 5
     paddingBottom: 9
   - name: button-newgame-down
-    x: 168
-    y: 356
+    x: 489
+    y: 300
     width: 175
     height: 39
     borderLeft: 0
@@ -123,9 +123,87 @@ MonoBehaviour:
     paddingRight: 3
     paddingTop: 1
     paddingBottom: 5
+  - name: button-Next
+    x: 877
+    y: 314
+    width: 52
+    height: 59
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 17
+    paddingTop: 11
+    paddingBottom: 11
+  - name: button-Next-Down
+    x: 932
+    y: 388
+    width: 52
+    height: 59
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 17
+    paddingTop: 11
+    paddingBottom: 11
+  - name: Button-Ok
+    x: 841
+    y: 242
+    width: 47
+    height: 35
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Button-Ok-Down
+    x: 841
+    y: 278
+    width: 47
+    height: 35
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: button-Prev
+    x: 930
+    y: 268
+    width: 52
+    height: 59
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 17
+    paddingTop: 11
+    paddingBottom: 11
+  - name: button-Prev-Down
+    x: 932
+    y: 328
+    width: 52
+    height: 59
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 12
+    paddingRight: 17
+    paddingTop: 11
+    paddingBottom: 11
   - name: pressanykey
     x: 0
-    y: 396
+    y: 324
     width: 488
     height: 51
     borderLeft: 0
@@ -136,8 +214,34 @@ MonoBehaviour:
     paddingRight: 8
     paddingTop: 9
     paddingBottom: 4
-  - name: title
+  - name: text-charcreate
+    x: 0
+    y: 376
+    width: 630
+    height: 71
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 7
+    paddingRight: 11
+    paddingTop: 4
+    paddingBottom: 11
+  - name: text-entername
     x: 489
+    y: 340
+    width: 203
+    height: 33
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 5
+    paddingRight: 7
+    paddingTop: 9
+    paddingBottom: 11
+  - name: title
+    x: 631
     y: 374
     width: 300
     height: 73
