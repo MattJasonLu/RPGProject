@@ -9,7 +9,6 @@ public class PlayerDir : MonoBehaviour
 
     private bool isMoving = false; // 表示鼠标是否按下
     private PlayerMove playerMove;
-    private Vector3 targetMousePosition;
 
     // Start is called before the first frame update
     void Start()
@@ -21,41 +20,44 @@ public class PlayerDir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (playerMove.playerState != PlayerState.Task)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            bool isCollier = Physics.Raycast(ray, out hitInfo);
-            if (isCollier && hitInfo.collider.tag == Tags.ground)
+            if (Input.GetMouseButtonDown(0))
             {
-                isMoving = true;
-                // 实例化点击效果
-                ShowClickEffect(hitInfo.point);
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitInfo;
+                bool isCollier = Physics.Raycast(ray, out hitInfo);
+                if (isCollier && hitInfo.collider.tag == Tags.ground)
+                {
+                    isMoving = true;
+                    // 实例化点击效果
+                    ShowClickEffect(hitInfo.point);
+                }
             }
-        }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            isMoving = false;
-        }
-
-        if (isMoving)
-        {
-            // 得到要移动的目标位置
-            // 让主角朝向目标位置
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            bool isCollier = Physics.Raycast(ray, out hitInfo);
-            if (isCollier && hitInfo.collider.tag == Tags.ground)
+            if (Input.GetMouseButtonUp(0))
             {
-                LookAtTarget(hitInfo.point);
+                isMoving = false;
             }
-        }
-        else
-        {
-            if (playerMove.isMoving)
+
+            if (isMoving)
             {
-                LookAtTarget(targetPosition);
+                // 得到要移动的目标位置
+                // 让主角朝向目标位置
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitInfo;
+                bool isCollier = Physics.Raycast(ray, out hitInfo);
+                if (isCollier && hitInfo.collider.tag == Tags.ground)
+                {
+                    LookAtTarget(hitInfo.point);
+                }
+            }
+            else
+            {
+                if (playerMove.isMoving)
+                {
+                    LookAtTarget(targetPosition);
+                }
             }
         }
     }

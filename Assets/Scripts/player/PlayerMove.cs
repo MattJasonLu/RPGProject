@@ -5,7 +5,8 @@ using UnityEngine;
 public enum PlayerState
 {
     Moving,
-    Idle
+    Idle,
+    Task
 }
 
 public class PlayerMove : MonoBehaviour
@@ -26,18 +27,21 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(dir.targetPosition, transform.position);
-        Debug.Log(distance);
-        if (distance > 0.1f)
+        if (playerState != PlayerState.Task)
         {
-            isMoving = true;
-            playerState = PlayerState.Moving;
-            controller.SimpleMove(transform.forward * speed);
-        }
-        else
-        {
-            isMoving = false;
-            playerState = PlayerState.Idle;
+            float distance = Vector3.Distance(dir.targetPosition, transform.position);
+            //Debug.Log(distance);
+            if (distance > 0.1f)
+            {
+                isMoving = true;
+                playerState = PlayerState.Moving;
+                controller.SimpleMove(transform.forward * speed);
+            }
+            else
+            {
+                isMoving = false;
+                playerState = PlayerState.Idle;
+            }
         }
     }
 }

@@ -25,6 +25,10 @@ public class PlayerAnimation : MonoBehaviour
         {
             PlayAnim("Idle");
         }
+        else
+        {
+            PlayAnim("Idle");
+        }
     }
 
     void PlayAnim(string animName)
