@@ -8,11 +8,14 @@ public class PlayerDir : MonoBehaviour
     public Vector3 targetPosition = Vector3.zero;
 
     private bool isMoving = false; // 表示鼠标是否按下
+    private PlayerMove playerMove;
+    private Vector3 targetMousePosition;
 
     // Start is called before the first frame update
     void Start()
     {
         targetPosition = transform.position;
+        playerMove = GetComponent<PlayerMove>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,13 @@ public class PlayerDir : MonoBehaviour
             if (isCollier && hitInfo.collider.tag == Tags.ground)
             {
                 LookAtTarget(hitInfo.point);
+            }
+        }
+        else
+        {
+            if (playerMove.isMoving)
+            {
+                LookAtTarget(targetPosition);
             }
         }
     }

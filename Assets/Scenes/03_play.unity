@@ -492,8 +492,8 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
-  - component: {fileID: 963194230}
   - component: {fileID: 963194231}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -584,10 +584,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2016b7323cbcd1d4b896a9da9f26e1bb, type: 3}
+  m_Script: {fileID: 11500000, guid: d35f002af8344c24a9c2be1058d44698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  distance: 0
+  scrollSpeed: 10
+  rotateSpeed: 2
 --- !u!82 &963194231
 AudioSource:
   m_ObjectHideFlags: 0
@@ -696,6 +698,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magician
       objectReference: {fileID: 0}
+    - target: {fileID: 4143380948091370505, guid: b41a6091521eb1c4fb29a9c21900afba,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4143380948091461673, guid: b41a6091521eb1c4fb29a9c21900afba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -704,7 +711,7 @@ PrefabInstance:
     - target: {fileID: 4143380948091461673, guid: b41a6091521eb1c4fb29a9c21900afba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.05
+      value: 28.99
       objectReference: {fileID: 0}
     - target: {fileID: 4143380948091461673, guid: b41a6091521eb1c4fb29a9c21900afba,
         type: 3}
@@ -860,6 +867,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532728f7449a4f84d88846323d41690e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1858938700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858938697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ab06abc7996f645bdd83d4a2ce2576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grade: 1
+  hp: 100
+  mp: 100
+  coin: 200
+  attack: 20
+  attack_plus: 0
+  def: 20
+  def_plus: 0
+  speed: 20
+  speed_plus: 0
+  point_remain: 0
 --- !u!114 &1858938701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,6 +904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   playerState: 1
+  isMoving: 0
 --- !u!143 &1858938702
 CharacterController:
   m_ObjectHideFlags: 0
