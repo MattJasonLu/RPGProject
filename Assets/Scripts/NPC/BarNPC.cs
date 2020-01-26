@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarNPC : MonoBehaviour
+public class BarNPC : NPC
 {
 
     public TweenPosition tweenPosition;
