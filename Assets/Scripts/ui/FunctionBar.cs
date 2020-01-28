@@ -11,7 +11,7 @@ public class FunctionBar : MonoBehaviour
 
     public void OnBagBtnClick()
     {
-
+        Inventory._instance.TransformState();
     }
 
     public void OnEquipBtnClick()

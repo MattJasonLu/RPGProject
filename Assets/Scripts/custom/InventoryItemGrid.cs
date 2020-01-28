@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryItemGrid : MonoBehaviour
 {
     public int id = 0;
-    private int num = 0;
+    public int num = 0;
     private ObjectInfo info = null;
     public UILabel numLabel;
 

@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
 
     private TweenPosition tween;
     private int coinCount = 1000; // 金币数量
+    private bool isShow = false;
 
 
     void Awake()
@@ -70,13 +71,28 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void Show()
+    void Show()
     {
+        isShow = true;
         tween.PlayForward();
     }
 
-    public void Hide()
+    void Hide()
     {
+        isShow = false;
         tween.PlayReverse();
+    }
+
+    // 转变状态
+    public void TransformState()
+    {
+        if (!isShow)
+        {
+            Show();
+        }
+        else
+        {
+            Hide();
+        }
     }
 }
