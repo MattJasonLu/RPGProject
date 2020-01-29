@@ -5,11 +5,22 @@ using UnityEngine;
 public class InventoryItem : UIDragDropItem
 {
     private UISprite sprite;
+    private bool isHover = false;
+    private int id;
 
     private void Awake()
     {
         base.Awake();
         sprite = GetComponent<UISprite>();
+    }
+
+    private void Update()
+    {
+        if (isHover)
+        {
+            // 显示提示信息
+            InventoryDes._instance.Show(id);
+        }
     }
 
     protected override void OnDragDropRelease(GameObject surface)
@@ -57,8 +68,19 @@ public class InventoryItem : UIDragDropItem
         sprite.spriteName = info.icon_name;
     }
 
-    public void SetIconName(string icon_name)
+    public void SetIconName(int id, string icon_name)
     {
+        this.id = id;
         sprite.spriteName = icon_name;
+    }
+
+    public void OnHoverOver()
+    {
+        isHover = true;
+    }
+
+    public void OnHoverOut()
+    {
+        isHover = false;
     }
 }

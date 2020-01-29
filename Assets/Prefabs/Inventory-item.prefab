@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6242255092517669340}
   - component: {fileID: 8914969059470710888}
   - component: {fileID: 8914969059470710885}
+  - component: {fileID: -8426098232456239151}
+  - component: {fileID: -7801109032240608001}
   m_Layer: 8
   m_Name: Inventory-item
   m_TagString: InventoryItem
@@ -117,3 +119,49 @@ MonoBehaviour:
   cloneOnDrag: 0
   pressAndHoldDelay: 1
   interactable: 1
+--- !u!114 &-8426098232456239151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2506385629658950938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bd99dcf43f97d48bb6215c70f0cd40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needsActiveCollider: 1
+--- !u!114 &-7801109032240608001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2506385629658950938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e862f287df53bb64db191162f851a296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHoverOver:
+  - mTarget: {fileID: 8914969059470710885}
+    mMethodName: OnHoverOver
+    mParameters: []
+    oneShot: 0
+  onHoverOut:
+  - mTarget: {fileID: 8914969059470710885}
+    mMethodName: OnHoverOut
+    mParameters: []
+    oneShot: 0
+  onPress: []
+  onRelease: []
+  onSelect: []
+  onDeselect: []
+  onClick: []
+  onDoubleClick: []
+  onDragStart: []
+  onDragEnd: []
+  onDragOver: []
+  onDragOut: []
+  onDrag: []

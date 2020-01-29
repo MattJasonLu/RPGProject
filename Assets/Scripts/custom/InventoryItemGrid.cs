@@ -27,7 +27,7 @@ public class InventoryItemGrid : MonoBehaviour
         this.id = id;
         info = ObjectsInfo._instance.GetObjectInfoById(id);
         InventoryItem item = GetComponentInChildren<InventoryItem>();
-        item.SetIconName(info.icon_name);
+        item.SetIconName(id, info.icon_name);
         numLabel.enabled = true;
         this.num = num;
         numLabel.text = num.ToString();
