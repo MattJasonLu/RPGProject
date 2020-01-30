@@ -24,4 +24,14 @@ public class PlayerStatus : MonoBehaviour
         coin += count;
     }
 
+    public bool GetPoint(int point = 1)
+    {
+        if (point_remain >= point)
+        {
+            point_remain -= point;
+            return true;
+        }
+        return false;
+    }
+
 }
