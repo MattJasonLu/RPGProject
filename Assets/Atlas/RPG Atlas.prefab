@@ -960,10 +960,10 @@ MonoBehaviour:
     y: 897
     width: 36
     height: 36
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
+    borderLeft: 3
+    borderRight: 3
+    borderTop: 3
+    borderBottom: 3
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
@@ -1402,14 +1402,14 @@ MonoBehaviour:
     y: 895
     width: 74
     height: 74
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
-    paddingLeft: 8
-    paddingRight: 6
-    paddingTop: 7
-    paddingBottom: 7
+    borderLeft: 2
+    borderRight: 2
+    borderTop: 2
+    borderBottom: 2
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: skill-01
     x: 1939
     y: 1086
@@ -1688,10 +1688,10 @@ MonoBehaviour:
     y: 207
     width: 89
     height: 46
-    borderLeft: 0
-    borderRight: 0
-    borderTop: 0
-    borderBottom: 0
+    borderLeft: 6
+    borderRight: 6
+    borderTop: 6
+    borderBottom: 6
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0

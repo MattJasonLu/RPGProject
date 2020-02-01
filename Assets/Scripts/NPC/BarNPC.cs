@@ -30,6 +30,7 @@ public class BarNPC : NPC
         // 点击目标
         if (Input.GetMouseButtonDown(0))
         {
+            audio.Play();
             ShowQuest();
             if (isInTask)
             {
