@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
     }
 
     // 拾取物品
-    public void GetId(int id)
+    public void GetId(int id, int count = 1)
     {
         // 第一步查找是否存在该物品
         // 第二，存在num+1
@@ -66,7 +66,7 @@ public class Inventory : MonoBehaviour
                 GameObject itemGo = NGUITools.AddChild(grid.gameObject, inventoryItem);
                 itemGo.transform.localPosition = Vector3.zero; // 初始位置，确保正中间
                 itemGo.GetComponent<UISprite>().depth = 4;
-                grid.SetId(id);
+                grid.SetId(id, count);
             }
         }
     }
@@ -94,5 +94,18 @@ public class Inventory : MonoBehaviour
         {
             Hide();
         }
+    }
+
+    // 取款方法，返回取款结果
+    public bool GetCoin(int count)
+    {
+        if (coinCount >= count)
+        {
+            coinCount -= count;
+            // 更新金币数量
+            coinNumberLabel.text = coinCount.ToString();
+            return true;
+        }
+        return false;
     }
 }

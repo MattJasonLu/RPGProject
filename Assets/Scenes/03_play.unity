@@ -2807,7 +2807,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   mFont: {fileID: 0}
-  mText: +50HP
+  mText: +MP100
   mFontSize: 20
   mFontStyle: 0
   mAlignment: 0
@@ -4761,7 +4761,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   mFont: {fileID: 0}
-  mText: "\u5C0F\u74F6\u8840\u836F"
+  mText: "\u84DD\u836F"
   mFontSize: 20
   mFontStyle: 0
   mAlignment: 0
@@ -9020,6 +9020,7 @@ GameObject:
   - component: {fileID: 1937368867}
   - component: {fileID: 1937368869}
   - component: {fileID: 1937368868}
+  - component: {fileID: 1937368870}
   m_Layer: 8
   m_Name: NumberInput
   m_TagString: Untagged
@@ -9077,7 +9078,7 @@ MonoBehaviour:
   mHeight: 34
   mDepth: 19
   mMat: {fileID: 0}
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 2.6470587
@@ -9137,6 +9138,19 @@ MonoBehaviour:
   onSubmit: []
   onChange: []
   mValue: 1
+--- !u!65 &1937368870
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937368865}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 90, y: 34, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1937510074
 PrefabInstance:
   m_ObjectHideFlags: 0
