@@ -65,6 +65,49 @@ public class ObjectsInfo : MonoBehaviour
                 info.price_buy = price_buy;
                 info.price_sell = price_sell;
             }
+            else if (type == ObjectType.Equip)
+            {
+                info.attack = int.Parse(proArr[4]);
+                info.defend = int.Parse(proArr[5]);
+                info.speed = int.Parse(proArr[6]);
+                info.price_sell = int.Parse(proArr[9]);
+                info.price_buy = int.Parse(proArr[10]);
+                string str_dresstype = proArr[7];
+                switch (str_dresstype)
+                {
+                    case "Head":
+                        info.dressType = DressType.Head;
+                        break;
+                    case "Armor":
+                        info.dressType = DressType.Armor;
+                        break;
+                    case "LeftHand":
+                        info.dressType = DressType.LeftHand;
+                        break;
+                    case "RightHand":
+                        info.dressType = DressType.RightHand;
+                        break;
+                    case "Shoe":
+                        info.dressType = DressType.Shoe;
+                        break;
+                    case "Accessory":
+                        info.dressType = DressType.Accessory;
+                        break;
+                }
+                string str_apptype = proArr[8];
+                switch (str_apptype)
+                {
+                    case "Swordman":
+                        info.applicationType = ApplicationType.Swordman;
+                        break;
+                    case "Magician":
+                        info.applicationType = ApplicationType.Magician;
+                        break;
+                    case "Common":
+                        info.applicationType = ApplicationType.Common;
+                        break;
+                }
+            }
             // 将物品添加到字典中，方便索引
             objectInfoDict.Add(id, info);
         }
@@ -78,6 +121,25 @@ public enum ObjectType
     Mat
 }
 
+// 穿戴类型
+public enum DressType
+{
+    Head,
+    Armor,
+    RightHand,
+    LeftHand,
+    Shoe,
+    Accessory
+}
+
+// 适用类型
+public enum ApplicationType
+{
+    Swordman,
+    Magician,
+    Common
+}
+
 public class ObjectInfo
 {
     public int id;
@@ -88,4 +150,10 @@ public class ObjectInfo
     public int mp;
     public int price_sell;
     public int price_buy;
+
+    public int attack;
+    public int defend;
+    public int speed;
+    public DressType dressType;
+    public ApplicationType applicationType;
 }

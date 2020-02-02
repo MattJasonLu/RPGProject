@@ -960,10 +960,10 @@ MonoBehaviour:
     y: 897
     width: 36
     height: 36
-    borderLeft: 3
-    borderRight: 3
-    borderTop: 3
-    borderBottom: 3
+    borderLeft: 5
+    borderRight: 5
+    borderTop: 5
+    borderBottom: 5
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0

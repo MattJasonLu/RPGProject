@@ -16,12 +16,12 @@ public class FunctionBar : MonoBehaviour
 
     public void OnEquipBtnClick()
     {
-
+        EquipmentUI._instance.TransformState();
     }
 
     public void OnSkillBtnClick()
     {
-
+        SkillUI._instance.TransformState();
     }
 
     public void OnSettingBtnClick()

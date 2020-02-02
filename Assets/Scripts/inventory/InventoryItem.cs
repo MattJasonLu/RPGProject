@@ -20,6 +20,15 @@ public class InventoryItem : UIDragDropItem
         {
             // 显示提示信息
             InventoryDes._instance.Show(id);
+            if (Input.GetMouseButtonDown(1))
+            {
+                // 穿戴功能
+                bool success = EquipmentUI._instance.Dress(id);
+                if (success)
+                {
+                    transform.parent.GetComponent<InventoryItemGrid>().MinusNumber();
+                }
+            }
         }
     }
 

@@ -39,6 +39,25 @@ public class InventoryItemGrid : MonoBehaviour
         numLabel.text = this.num.ToString();
     }
 
+    // 用来减去数量
+    public bool MinusNumber(int num =1)
+    {
+        if (this.num >= num)
+        {
+            this.num -= num;
+            numLabel.text = this.num.ToString();
+            if (this.num == 0)
+            {
+                // 清空该物品格子
+                ClearInfo();
+                // 销毁物品
+                GameObject.Destroy(GetComponentInChildren<InventoryItem>().gameObject);
+            }
+            return true;
+        }
+        return false;
+    }
+
     // 清空格子内的物品信息
     public void ClearInfo()
     {
