@@ -1406,10 +1406,10 @@ MonoBehaviour:
     borderRight: 2
     borderTop: 2
     borderBottom: 2
-    paddingLeft: 0
-    paddingRight: 0
-    paddingTop: 0
-    paddingBottom: 0
+    paddingLeft: 8
+    paddingRight: 8
+    paddingTop: 8
+    paddingBottom: 8
   - name: skill-01
     x: 1939
     y: 1086
