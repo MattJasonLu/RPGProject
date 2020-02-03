@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SkillItem : MonoBehaviour
 {
-    private int id;
+    public int id;
     private SkillInfo info;
     private UISprite iconname_sprite;
     private UILabel name_label;
     private UILabel applytype_label;
     private UILabel des_label;
     private UILabel mp_label;
+    private GameObject icon_mask;
 
     private void Awake()
     {
@@ -23,6 +24,8 @@ public class SkillItem : MonoBehaviour
         applytype_label = transform.Find("property/applytype_bg/applytype").GetComponent<UILabel>();
         des_label = transform.Find("property/des_bg/des").GetComponent<UILabel>();
         mp_label = transform.Find("property/mp_bg/mp").GetComponent<UILabel>();
+        icon_mask = transform.Find("icon_mask").gameObject;
+        icon_mask.SetActive(false);
     }
 
     // 通过调用该方法来更新显示
@@ -50,5 +53,21 @@ public class SkillItem : MonoBehaviour
         }
         des_label.text = info.des;
         mp_label.text = info.mp.ToString();
+    }
+
+    public void UpdateShow(int level)
+    {
+        // 技能可用
+        if (info.level <= level)
+        {
+            icon_mask.SetActive(false);
+            iconname_sprite.GetComponent<SkillItemIcon>().enabled = true;
+        }
+        else
+        {
+            icon_mask.SetActive(true);
+            // 不可拖拽
+            iconname_sprite.GetComponent<SkillItemIcon>().enabled = false;
+        }
     }
 }

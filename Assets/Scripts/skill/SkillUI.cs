@@ -52,11 +52,21 @@ public class SkillUI : MonoBehaviour
         {
             isShow = true;
             tween.PlayForward();
+            UpdateShow();
         }
         else
         {
             isShow = false;
             tween.PlayReverse();
+        }
+    }
+
+    void UpdateShow()
+    {
+        SkillItem[] items = GetComponentsInChildren<SkillItem>();
+        foreach (SkillItem item in items)
+        {
+            item.UpdateShow(playerStatus.level);
         }
     }
 }
