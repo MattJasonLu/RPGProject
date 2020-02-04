@@ -13,8 +13,11 @@ public class PlayerStatus : MonoBehaviour
 {
     public HeroType heroType;
     public int level = 1;
-    public int hp = 100;
+    public string name = "FUCK";
+    public int hp = 100; // 最大值
     public int mp = 100;
+    public int hp_remain = 100; // 剩余值
+    public int mp_remain = 100;
     public int coin = 200;
 
     public int attack = 20;
