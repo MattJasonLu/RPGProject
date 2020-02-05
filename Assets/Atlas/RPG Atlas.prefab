@@ -717,10 +717,10 @@ MonoBehaviour:
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 27
-    paddingRight: 30
-    paddingTop: 11
-    paddingBottom: 6
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: icon-boot0
     x: 1826
     y: 420
