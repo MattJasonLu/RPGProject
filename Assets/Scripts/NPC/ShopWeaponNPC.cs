@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ShopWeaponNPC : NPC
 {
-    public void OnMouseOver()
+    private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))
         {
             GetComponent<AudioSource>().Play();
-            ShopDrug._instance.TransformState();
+            ShopWeapon._instance.TransformState();
         }
     }
 }

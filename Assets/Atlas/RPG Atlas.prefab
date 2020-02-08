@@ -964,10 +964,10 @@ MonoBehaviour:
     borderRight: 5
     borderTop: 5
     borderBottom: 5
-    paddingLeft: 6
-    paddingRight: 6
-    paddingTop: 6
-    paddingBottom: 6
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
   - name: mapname
     x: 985
     y: 27
