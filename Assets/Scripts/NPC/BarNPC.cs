@@ -91,7 +91,7 @@ public class BarNPC : NPC
         // 完成任务
         if (killCount >= 10)
         {
-            playerStatus.GetCoin(1000);
+            Inventory._instance.GetCoin(1000);
             killCount = 0;
             isInTask = false;
         }

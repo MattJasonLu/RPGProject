@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7156422157004910768}
   - component: {fileID: 9198166712666819144}
+  - component: {fileID: 331118629}
   m_Layer: 8
   m_Name: WeaponItem
   m_TagString: Untagged
@@ -94,6 +95,18 @@ MonoBehaviour:
   mAtlas: {fileID: 4222135715602262290, guid: bd9d3883c54160c419716079f9939ca8, type: 3}
   mSpriteName: LabelTag
   mFillCenter: 1
+--- !u!114 &331118629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120385567156924038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b9061f699441e408ef9a7c8c83afdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1397065588838498934
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,8 +825,8 @@ MonoBehaviour:
   disabledSprite2D: {fileID: 0}
   pixelSnap: 0
   onClick:
-  - mTarget: {fileID: 0}
-    mMethodName: OnBuyId1001
+  - mTarget: {fileID: 331118629}
+    mMethodName: OnBuyClick
     mParameters: []
     oneShot: 0
 --- !u!1 &7400287088278766466

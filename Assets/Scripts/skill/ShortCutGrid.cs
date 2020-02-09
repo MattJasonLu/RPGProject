@@ -15,7 +15,9 @@ public class ShortCutGrid : MonoBehaviour
     private UISprite icon;
     private int id;
     private ShortCutType type = ShortCutType.None;
-    private SkillInfo info;
+    private SkillInfo skillInfo;
+    private ObjectInfo objectInfo;
+    private PlayerStatus ps;
 
     private void Awake()
     {
@@ -25,29 +27,61 @@ public class ShortCutGrid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ps = GameObject.FindGameObjectWithTag(Tags.player).GetComponent<PlayerStatus>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(keyCode))
+        if (Input.GetKeyDown(keyCode))
         {
+            if (type == ShortCutType.Drug)
+            {
+                OnDrugUse();
+            } 
+            else if (type == ShortCutType.Skill)
+            {
 
+            }
         }
     }
 
     public void SetSkill(int id)
     {
         this.id = id;
-        this.info = SkillsInfo._instance.GetSkillInfoById(id);
+        this.skillInfo = SkillsInfo._instance.GetSkillInfoById(id);
         icon.gameObject.SetActive(true);
-        icon.spriteName = info.icon_name;
+        icon.spriteName = skillInfo.icon_name;
         type = ShortCutType.Skill;
     }
 
     public void SetInventory(int id)
     {
+        this.id = id;
+        objectInfo = ObjectsInfo._instance.GetObjectInfoById(id);
+        if (objectInfo.type == ObjectType.Drug)
+        {
+            icon.gameObject.SetActive(true);
+            icon.spriteName = objectInfo.icon_name;
+            type = ShortCutType.Drug;
+        }
 
+    }
+
+    public void OnDrugUse()
+    {
+        bool success = Inventory._instance.MinusId(id);
+        if (success)
+        {
+            ps.GetDrug(objectInfo.hp, objectInfo.mp);
+        }
+        else
+        {
+            type = ShortCutType.None;
+            icon.gameObject.SetActive(false);
+            id = 0;
+            skillInfo = null;
+            objectInfo = null;
+        }
     }
 }

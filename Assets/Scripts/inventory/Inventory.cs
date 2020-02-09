@@ -108,4 +108,26 @@ public class Inventory : MonoBehaviour
         }
         return false;
     }
+
+    public bool MinusId(int id, int count = 1)
+    {
+        InventoryItemGrid grid = null;
+        foreach (InventoryItemGrid temp in itemGridList)
+        {
+            if (temp.id == id)
+            {
+                grid = temp;
+                break;
+            }
+        }
+        if (grid == null)
+        {
+            return false;
+        }
+        else
+        {
+            bool success = grid.MinusNumber(count);
+            return success;
+        }
+    }
 }

@@ -13,10 +13,10 @@ public class WeaponItem : MonoBehaviour
 
     private void Awake()
     {
-        icon_sprite = transform.Find("icon").GetComponent<UISprite>();
+        icon_sprite = transform.Find("img").GetComponent<UISprite>();
         name_label = transform.Find("name").GetComponent<UILabel>();
         effect_label = transform.Find("effect").GetComponent<UILabel>();
-        pricesell_label = transform.Find("price_sell").GetComponent<UILabel>();
+        pricesell_label = transform.Find("price").GetComponent<UILabel>();
     }
 
     // 更新显示装备
@@ -40,4 +40,11 @@ public class WeaponItem : MonoBehaviour
         }
         pricesell_label.text = info.price_sell.ToString();
     }
+
+    // 购买方法
+    public void OnBuyClick()
+    {
+        ShopWeapon._instance.OnBuyClick(id);
+    }
+
 }

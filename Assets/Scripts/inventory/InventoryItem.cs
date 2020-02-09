@@ -62,6 +62,10 @@ public class InventoryItem : UIDragDropItem
                 grid1.SetId(grid2.id, grid2.num);
                 grid2.SetId(id, num);
             }
+            else if (surface.tag == Tags.shortcut)
+            {
+                surface.GetComponent<ShortCutGrid>().SetInventory(id);
+            }
         }
         ResetPosition();
     }
