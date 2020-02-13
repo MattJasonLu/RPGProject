@@ -14441,9 +14441,10 @@ GameObject:
   - component: {fileID: 6031818902312891942}
   - component: {fileID: 6031818902314219068}
   - component: {fileID: 6031818902315305084}
+  - component: {fileID: 1932431304}
   m_Layer: 0
   m_Name: modelStaircase2_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14508,6 +14509,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1932431304
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313310726}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 324c2f60acc44e041a74339888751499, type: 3}
 --- !u!1 &6031818902313310728
 GameObject:
   m_ObjectHideFlags: 0
@@ -14597,9 +14612,10 @@ GameObject:
   - component: {fileID: 6031818902312891946}
   - component: {fileID: 6031818902314219008}
   - component: {fileID: 6031818902315305024}
+  - component: {fileID: 714726778}
   m_Layer: 0
   m_Name: modelBridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14664,6 +14680,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &714726778
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313310730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 2b24625f0a009734c8e241c760f4be10, type: 3}
 --- !u!1 &6031818902313310732
 GameObject:
   m_ObjectHideFlags: 0
@@ -15221,9 +15251,10 @@ GameObject:
   - component: {fileID: 6031818902312891962}
   - component: {fileID: 6031818902314219024}
   - component: {fileID: 6031818902315305040}
+  - component: {fileID: 1727654165}
   m_Layer: 0
   m_Name: modelBridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -15288,6 +15319,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1727654165
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313310746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 2b24625f0a009734c8e241c760f4be10, type: 3}
 --- !u!1 &6031818902313310748
 GameObject:
   m_ObjectHideFlags: 0
@@ -15533,9 +15578,10 @@ GameObject:
   - component: {fileID: 6031818902312891970}
   - component: {fileID: 6031818902314219102}
   - component: {fileID: 6031818902315305886}
+  - component: {fileID: 568787927}
   m_Layer: 0
   m_Name: modelStaircase2_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -15600,6 +15646,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &568787927
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313310754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 324c2f60acc44e041a74339888751499, type: 3}
 --- !u!1 &6031818902313310756
 GameObject:
   m_ObjectHideFlags: 0
@@ -18483,9 +18543,10 @@ GameObject:
   - component: {fileID: 6031818902312880530}
   - component: {fileID: 6031818902314219116}
   - component: {fileID: 6031818902315305900}
+  - component: {fileID: 1340162548}
   m_Layer: 0
   m_Name: modelBridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -18550,6 +18611,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1340162548
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313310834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 2b24625f0a009734c8e241c760f4be10, type: 3}
 --- !u!1 &6031818902313310836
 GameObject:
   m_ObjectHideFlags: 0
@@ -21837,9 +21912,10 @@ GameObject:
   - component: {fileID: 6031818902312892136}
   - component: {fileID: 6031818902314219206}
   - component: {fileID: 6031818902315304966}
+  - component: {fileID: 1203330341}
   m_Layer: 0
   m_Name: modelBridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -21904,6 +21980,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1203330341
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313310920}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 2b24625f0a009734c8e241c760f4be10, type: 3}
 --- !u!1 &6031818902313310922
 GameObject:
   m_ObjectHideFlags: 0
@@ -23319,9 +23409,10 @@ GameObject:
   - component: {fileID: 6031818902312891920}
   - component: {fileID: 6031818902314219246}
   - component: {fileID: 6031818902315305006}
+  - component: {fileID: 29445167}
   m_Layer: 0
   m_Name: modelStaircase2_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -23386,6 +23477,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &29445167
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313310960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 324c2f60acc44e041a74339888751499, type: 3}
 --- !u!1 &6031818902313310962
 GameObject:
   m_ObjectHideFlags: 0
@@ -23787,9 +23892,10 @@ GameObject:
   - component: {fileID: 6031818902312891932}
   - component: {fileID: 6031818902314219258}
   - component: {fileID: 6031818902315305018}
+  - component: {fileID: 1198688817}
   m_Layer: 0
   m_Name: modelBridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -23854,6 +23960,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1198688817
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313310972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 2b24625f0a009734c8e241c760f4be10, type: 3}
 --- !u!1 &6031818902313310974
 GameObject:
   m_ObjectHideFlags: 0
@@ -23943,9 +24063,10 @@ GameObject:
   - component: {fileID: 6031818902312892192}
   - component: {fileID: 6031818902314219326}
   - component: {fileID: 6031818902315305342}
+  - component: {fileID: 1875937793}
   m_Layer: 0
   m_Name: modelBridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -24010,6 +24131,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1875937793
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313310976}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 2b24625f0a009734c8e241c760f4be10, type: 3}
 --- !u!1 &6031818902313310978
 GameObject:
   m_ObjectHideFlags: 0
@@ -24411,9 +24546,10 @@ GameObject:
   - component: {fileID: 6031818902312892204}
   - component: {fileID: 6031818902314219274}
   - component: {fileID: 6031818902315305290}
+  - component: {fileID: 177005855}
   m_Layer: 0
   m_Name: modelBridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -24478,6 +24614,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &177005855
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313310988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 2b24625f0a009734c8e241c760f4be10, type: 3}
 --- !u!1 &6031818902313310990
 GameObject:
   m_ObjectHideFlags: 0
@@ -27843,9 +27993,10 @@ GameObject:
   - component: {fileID: 6031818902312892036}
   - component: {fileID: 6031818902314219362}
   - component: {fileID: 6031818902315305122}
+  - component: {fileID: 728041625}
   m_Layer: 0
   m_Name: modelStaircase2_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -27910,6 +28061,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &728041625
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313311076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 324c2f60acc44e041a74339888751499, type: 3}
 --- !u!1 &6031818902313311078
 GameObject:
   m_ObjectHideFlags: 0
@@ -49137,9 +49302,10 @@ GameObject:
   - component: {fileID: 6031818902312880552}
   - component: {fileID: 6031818902314207626}
   - component: {fileID: 6031818902315305930}
+  - component: {fileID: 1973539388}
   m_Layer: 0
   m_Name: modelBridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -49204,6 +49370,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1973539388
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313311624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 2b24625f0a009734c8e241c760f4be10, type: 3}
 --- !u!1 &6031818902313311626
 GameObject:
   m_ObjectHideFlags: 0
@@ -49761,9 +49941,10 @@ GameObject:
   - component: {fileID: 6031818902312880568}
   - component: {fileID: 6031818902314207642}
   - component: {fileID: 6031818902315305946}
+  - component: {fileID: 439557754}
   m_Layer: 0
   m_Name: modelBridge
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -49828,6 +50009,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &439557754
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031818902313311640}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 2b24625f0a009734c8e241c760f4be10, type: 3}
 --- !u!1 &6031818902313311642
 GameObject:
   m_ObjectHideFlags: 0

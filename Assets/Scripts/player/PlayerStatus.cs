@@ -12,7 +12,7 @@ public enum HeroType
 public class PlayerStatus : MonoBehaviour
 {
     public HeroType heroType;
-    public int level = 1;
+    public int level = 1; // 100 + level * 30
     public string name = "FUCK";
     public int hp = 100; // 最大值
     public int mp = 100;
@@ -27,7 +27,14 @@ public class PlayerStatus : MonoBehaviour
     public int speed_plus = 0;
 
     public int point_remain = 0; // 剩余点数
-    
+
+    public float exp = 0; // 当前已经获得的经验
+
+    private void Start()
+    {
+        GetExp(0);
+    }
+
     public void GetDrug(int hp, int mp)
     {
         hp_remain += hp;
@@ -50,6 +57,19 @@ public class PlayerStatus : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void GetExp(int exp)
+    {
+        this.exp += exp;
+        int total_exp = 100 + level * 30;
+        while (this.exp >= total_exp)
+        {
+            this.level++;
+            this.exp -= total_exp;
+            total_exp = 100 + level * 30;
+        }
+        ExpBar._instance.SetValue(this.exp / total_exp);
     }
 
 }
