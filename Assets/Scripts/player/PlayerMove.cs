@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState
+public enum ControlWalkState
 {
     Moving,
     Idle,
@@ -12,7 +12,7 @@ public enum PlayerState
 public class PlayerMove : MonoBehaviour
 {
     public float speed = 3;
-    public PlayerState playerState = PlayerState.Idle;
+    public ControlWalkState playerState = ControlWalkState.Idle;
     private PlayerDir dir;
     private CharacterController controller;
     public bool isMoving = false;
@@ -27,20 +27,20 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerState != PlayerState.Task)
+        if (playerState != ControlWalkState.Task)
         {
             float distance = Vector3.Distance(dir.targetPosition, transform.position);
             //Debug.Log(distance);
-            if (distance > 0.1f)
+            if (distance > 0.3f)
             {
                 isMoving = true;
-                playerState = PlayerState.Moving;
+                playerState = ControlWalkState.Moving;
                 controller.SimpleMove(transform.forward * speed);
             }
             else
             {
                 isMoving = false;
-                playerState = PlayerState.Idle;
+                playerState = ControlWalkState.Idle;
             }
         }
     }

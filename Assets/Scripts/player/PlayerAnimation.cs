@@ -17,11 +17,11 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (move.playerState == PlayerState.Moving)
+        if (move.playerState == ControlWalkState.Moving)
         {
             PlayAnim("Run");
         }
-        else if (move.playerState == PlayerState.Idle)
+        else if (move.playerState == ControlWalkState.Idle)
         {
             PlayAnim("Idle");
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,18 +14,28 @@ public class WolfBaby : MonoBehaviour
 {
     public WolfState state = WolfState.Idle;
     public int hp = 100;
+    public int attack = 10;
     public float miss_rate = 0.2f;
     public string aniname_death;
     public string aniname_idle;
     public string aniname_walk;
     public string aniname_now;
+    public string aniname_normalattack;
+    public float time_normalattack;
+    public string aniname_crazyattack;
+    public float time_crazyattack;
+    public float crazyattack_rate;
+    public string aniname_nowattack;
     public float time = 1;
     public float timer = 0;
     public float speed = 1;
-    public float red_time = 1; // 显示被击中的时间
-    public float attack_timer = 0;
     public AudioClip missSound;
     public GameObject hudtextPrefab;
+    public int attack_rate = 1; // 攻击速率每秒
+    public Transform target;
+    public float minDistance = 2;
+    public float maxDistance = 5;
+
 
     private Animation animation;
     private CharacterController cc;
@@ -35,6 +46,8 @@ public class WolfBaby : MonoBehaviour
     private HUDText hudtext;
     private UIFollowTarget followTarget;
     private GameObject body;
+    private float attack_timer = 0;
+
 
     private void Awake()
     {
@@ -42,6 +55,7 @@ public class WolfBaby : MonoBehaviour
         cc = GetComponent<CharacterController>();
         body = transform.Find("Wolf_Baby").gameObject;
         aniname_now = aniname_idle;
+        aniname_nowattack = aniname_nowattack;
         normal = body.GetComponent<Renderer>().material.color;
         hudtextFollow = transform.Find("HUDText").gameObject;
     }
@@ -67,7 +81,7 @@ public class WolfBaby : MonoBehaviour
         }
         else if (state == WolfState.Attack)
         {
-            
+            AutoAttack();
         }
         else
         {
@@ -92,9 +106,75 @@ public class WolfBaby : MonoBehaviour
         }
     }
 
+    void AutoAttack()
+    {
+        if (target != null)
+        {
+            float distance = Vector3.Distance(target.position, transform.position);
+            if (distance > maxDistance)
+            {
+                // 停止自动攻击
+                target = null;
+                state = WolfState.Idle;
+            }
+            else if (distance <= minDistance)
+            {
+                // 自动攻击
+                attack_timer += Time.deltaTime;
+                animation.CrossFade(aniname_nowattack);
+                if (aniname_nowattack == aniname_normalattack)
+                {
+                    if (attack_timer > time_normalattack)
+                    {
+                        // 产生伤害
+                        aniname_nowattack = aniname_idle;
+                    }
+                }
+                else if (aniname_nowattack == aniname_crazyattack)
+                {
+                    if (attack_timer > time_crazyattack)
+                    {
+                        // 产生伤害
+                        aniname_nowattack = aniname_idle;
+                    }
+                }
+                if (attack_timer > (1f / attack_rate))
+                {
+                    RandomAttack();
+                    // 再次进行攻击
+                    attack_timer = 0;
+                }
+            }
+            else
+            {
+                // 跟随
+                transform.LookAt(target);
+                cc.SimpleMove(transform.forward * speed);
+                animation.CrossFade(aniname_walk);
+            }
+        }
+        else
+        {
+            state = WolfState.Idle;
+        }
+    }
+
+    void RandomAttack()
+    {
+        float value = UnityEngine.Random.Range(0, 1);
+        if (value < crazyattack_rate)
+        {
+            aniname_nowattack = aniname_crazyattack;
+        }
+        else
+        {
+            aniname_nowattack = aniname_normalattack;
+        }
+    }
+
     void RandomState()
     {
-        int value = Random.Range(0, 2);
+        int value = UnityEngine.Random.Range(0, 2);
         if (value == 0)
         {
             aniname_now = aniname_idle;
@@ -104,7 +184,7 @@ public class WolfBaby : MonoBehaviour
             // 随机转向
             if (aniname_now != aniname_walk)
             {
-                transform.Rotate(transform.up * Random.Range(0, 360));
+                transform.Rotate(transform.up * UnityEngine.Random.Range(0, 360));
             }
             aniname_now = aniname_walk;
         }
@@ -113,7 +193,11 @@ public class WolfBaby : MonoBehaviour
     // 受到伤害
     public void TakeDamage(int attack)
     {
-        float value = Random.Range(0f, 1f);
+        if (state == WolfState.Death)
+        {
+            return;
+        }
+        float value = UnityEngine.Random.Range(0f, 1f);
         // 发生miss
         if (value < miss_rate)
         {

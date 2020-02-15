@@ -20,7 +20,7 @@ public class PlayerDir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerMove.playerState != PlayerState.Task)
+        if (playerMove.playerState != ControlWalkState.Task)
         {
             if (Input.GetMouseButtonDown(0))
             {

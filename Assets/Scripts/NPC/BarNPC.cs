@@ -47,13 +47,13 @@ public class BarNPC : NPC
     {
         tweenPosition.gameObject.SetActive(true);
         tweenPosition.PlayForward();
-        playerMove.playerState = PlayerState.Task;
+        playerMove.playerState = ControlWalkState.Task;
     }
 
     void HideQuest()
     {
         tweenPosition.PlayReverse();
-        playerMove.playerState = PlayerState.Idle;
+        playerMove.playerState = ControlWalkState.Idle;
     }
 
     // 任务初始状态

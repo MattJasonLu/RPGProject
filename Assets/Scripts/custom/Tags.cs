@@ -10,4 +10,5 @@ public class Tags : MonoBehaviour
     public const string inventory_item_grid = "InventoryItemGrid";
     public const string shortcut = "ShortCut";
     public const string minimap = "Minimap";
+    public const string enemy = "Enemy";
 }
