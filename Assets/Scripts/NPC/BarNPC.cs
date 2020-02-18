@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BarNPC : NPC
 {
-
+    public static BarNPC _instance;
     public TweenPosition tweenPosition;
     public UILabel desLabel;
     public GameObject acceptBtnGo;
@@ -18,6 +18,11 @@ public class BarNPC : NPC
     public int killCount = 0;
 
     private PlayerStatus playerStatus;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     private void Start()
     {
@@ -56,6 +61,14 @@ public class BarNPC : NPC
         playerMove.playerState = ControlWalkState.Idle;
     }
 
+    public void OnKillWolf()
+    {
+        if (isInTask)
+        {
+            killCount++;
+        }
+    }
+
     // 任务初始状态
     void ShowTaskDes()
     {
@@ -91,7 +104,7 @@ public class BarNPC : NPC
         // 完成任务
         if (killCount >= 10)
         {
-            Inventory._instance.GetCoin(1000);
+            Inventory._instance.AddCoin(1000);
             killCount = 0;
             isInTask = false;
         }

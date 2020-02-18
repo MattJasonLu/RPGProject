@@ -17,9 +17,9 @@ public class EquipmentUI : MonoBehaviour
     private GameObject accessory;
     private PlayerStatus playerStatus;
 
-    private int attack = 0;
-    private int defend = 0;
-    private int speed = 0;
+    public int attack = 0;
+    public int defend = 0;
+    public int speed = 0;
 
     void Awake()
     {

@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     public float speed = 3;
     public ControlWalkState playerState = ControlWalkState.Idle;
     private PlayerDir dir;
+    private PlayerAttack attack;
     private CharacterController controller;
     public bool isMoving = false;
 
@@ -22,15 +23,15 @@ public class PlayerMove : MonoBehaviour
     {
         dir = GetComponent<PlayerDir>();
         controller = GetComponent<CharacterController>();
+        attack = GetComponent<PlayerAttack>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerState != ControlWalkState.Task)
+        if (attack.state == PlayerState.ControlWalk)
         {
             float distance = Vector3.Distance(dir.targetPosition, transform.position);
-            //Debug.Log(distance);
             if (distance > 0.3f)
             {
                 isMoving = true;
@@ -43,5 +44,11 @@ public class PlayerMove : MonoBehaviour
                 playerState = ControlWalkState.Idle;
             }
         }
+    }
+
+    public void SimpleMove(Vector3 targetPos)
+    {
+        transform.LookAt(targetPos);
+        controller.SimpleMove(transform.forward * speed);
     }
 }

@@ -109,6 +109,12 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
+    public void AddCoin(int count)
+    {
+        coinCount += count;
+        coinNumberLabel.text = coinCount.ToString();
+    }
+
     public bool MinusId(int id, int count = 1)
     {
         InventoryItemGrid grid = null;

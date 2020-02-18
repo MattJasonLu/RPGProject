@@ -14,6 +14,7 @@ public class WolfBaby : MonoBehaviour
 {
     public WolfState state = WolfState.Idle;
     public int hp = 100;
+    public int exp = 20;
     public int attack = 10;
     public float miss_rate = 0.2f;
     public string aniname_death;
@@ -35,7 +36,8 @@ public class WolfBaby : MonoBehaviour
     public Transform target;
     public float minDistance = 2;
     public float maxDistance = 5;
-
+    public WolfSpawn spawn;
+    
 
     private Animation animation;
     private CharacterController cc;
@@ -45,15 +47,15 @@ public class WolfBaby : MonoBehaviour
     private GameObject hudtextFollow;
     private HUDText hudtext;
     private UIFollowTarget followTarget;
-    private GameObject body;
+    public GameObject body;
     private float attack_timer = 0;
-
+    private PlayerStatus ps;
 
     private void Awake()
     {
         animation = GetComponent<Animation>();
         cc = GetComponent<CharacterController>();
-        body = transform.Find("Wolf_Baby").gameObject;
+        //body = transform.Find("Wolf_Baby").gameObject;
         aniname_now = aniname_idle;
         aniname_nowattack = aniname_nowattack;
         normal = body.GetComponent<Renderer>().material.color;
@@ -71,6 +73,8 @@ public class WolfBaby : MonoBehaviour
         followTarget.target = hudtextFollow.transform;
         followTarget.gameCamera = Camera.main;
         //followTarget.uiCamera = UICamera.current.GetComponent<Camera>();
+
+        ps = GameObject.FindGameObjectWithTag(Tags.player).GetComponent<PlayerStatus>();
     }
 
     private void Update()
@@ -98,11 +102,6 @@ public class WolfBaby : MonoBehaviour
                 timer = 0;
                 RandomState();
             }
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            TakeDamage(1);
         }
     }
 
@@ -197,6 +196,8 @@ public class WolfBaby : MonoBehaviour
         {
             return;
         }
+        target = GameObject.FindGameObjectWithTag(Tags.player).transform;
+        state = WolfState.Attack;
         float value = UnityEngine.Random.Range(0f, 1f);
         // 发生miss
         if (value < miss_rate)
@@ -207,6 +208,7 @@ public class WolfBaby : MonoBehaviour
         // 击中
         else
         {
+            hudtext.Add("-" + attack, Color.red, 1);
             this.hp -= attack;
             StartCoroutine(ShowBodyRed());
             if (hp <= 0)
@@ -226,8 +228,21 @@ public class WolfBaby : MonoBehaviour
         body.GetComponent<Renderer>().material.color = normal;
     }
 
-    private void OnDestroy()
+    private void OnDestroy() 
     {
+        spawn.MinusNumber();
+        ps.GetExp(exp);
+        BarNPC._instance.OnKillWolf();
         Destroy(hudtextGo);
+    }
+
+    private void OnMouseEnter()
+    {
+        CursorManager._instance.SetAttack();
+    }
+
+    private void OnMouseExit()
+    {
+        CursorManager._instance.SetNormal();
     }
 }
