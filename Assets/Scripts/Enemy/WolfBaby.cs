@@ -109,6 +109,13 @@ public class WolfBaby : MonoBehaviour
     {
         if (target != null)
         {
+            PlayerState ps = target.GetComponent<PlayerAttack>().state;
+            if (ps == PlayerState.Death)
+            {
+                target = null;
+                state = WolfState.Idle;
+                return;
+            }
             float distance = Vector3.Distance(target.position, transform.position);
             if (distance > maxDistance)
             {
@@ -126,6 +133,7 @@ public class WolfBaby : MonoBehaviour
                     if (attack_timer > time_normalattack)
                     {
                         // 产生伤害
+                        target.GetComponent<PlayerAttack>().TakeDamage(attack);
                         aniname_nowattack = aniname_idle;
                     }
                 }
@@ -134,6 +142,7 @@ public class WolfBaby : MonoBehaviour
                     if (attack_timer > time_crazyattack)
                     {
                         // 产生伤害
+                        target.GetComponent<PlayerAttack>().TakeDamage(attack);
                         aniname_nowattack = aniname_idle;
                     }
                 }

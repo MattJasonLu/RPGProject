@@ -2288,6 +2288,36 @@ MonoBehaviour:
   mMaxLineHeight: 0
   mLineWidth: 0
   mMultiline: 1
+--- !u!1 &255250034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 255250035}
+  m_Layer: 8
+  m_Name: HUDText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &255250035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255250034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1355928358}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &267639283
 GameObject:
   m_ObjectHideFlags: 0
@@ -12632,6 +12662,52 @@ MonoBehaviour:
   mAtlas: {fileID: 4222135715602262290, guid: bd9d3883c54160c419716079f9939ca8, type: 3}
   mSpriteName: Slot-layout
   mFillCenter: 1
+--- !u!1 &1612467037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612467039}
+  - component: {fileID: 1612467038}
+  m_Layer: 0
+  m_Name: BossWolfSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1612467038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612467037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f223151b33009c41a7348f0764ef27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxnum: 1
+  time: 1
+  prefab: {fileID: 489558453072848231, guid: b3f7491a59a4e77479377bef8eca3e37, type: 3}
+--- !u!4 &1612467039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612467037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7802429, y: 28.779173, z: -55.475723}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1633607328
 GameObject:
   m_ObjectHideFlags: 0
@@ -14345,10 +14421,15 @@ MonoBehaviour:
   aniname_normalattack: Attack1
   aniname_idle: Idle
   aniname_now: Attack1
+  aniname_death: Death
   time_normalattack: 0.8
   rate_normalattack: 1
   min_distance: 5
   effect: {fileID: 100004, guid: db28bc8977daeff48a6299d2a47ab6f1, type: 3}
+  miss_rate: 0
+  hudtextPrefab: {fileID: 100000, guid: da1dd9b479a126b4b87cee97599c6ed7, type: 3}
+  missSound: {fileID: 8300000, guid: e20723268b93d6649bf9a94ed9e7721a, type: 3}
+  body: {fileID: 1941259743}
 --- !u!114 &1858938701 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1858938701, guid: b41a6091521eb1c4fb29a9c21900afba,
@@ -15015,6 +15096,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938639072}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1941259743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4143380948091370507, guid: b41a6091521eb1c4fb29a9c21900afba,
+    type: 3}
+  m_PrefabInstance: {fileID: 1858938696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1950797536
 GameObject:
   m_ObjectHideFlags: 0
@@ -16991,7 +17078,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2130105829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b4c50e12008f84e92708f33dbf1d18, type: 3}
+  m_Script: {fileID: 11500000, guid: 47b7c26c074bd19468ca15ea289a46ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2130105833

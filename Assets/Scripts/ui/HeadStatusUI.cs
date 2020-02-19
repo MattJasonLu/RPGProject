@@ -32,8 +32,8 @@ public class HeadStatusUI : MonoBehaviour
     public void UpdateShow(PlayerStatus ps)
     {
         name.text = "Lv." + ps.level + " " + ps.name;
-        hpBar.value = ps.hp_remain / ps.hp;
-        mpBar.value = ps.mp_remain / ps.mp;
+        hpBar.value = (float)ps.hp_remain / (float)ps.hp;
+        mpBar.value = (float)ps.mp_remain / (float)ps.mp;
         hpLabel.text = ps.hp_remain + "/" + ps.hp;
         mpLabel.text = ps.mp_remain+ "/" + ps.mp;
     }

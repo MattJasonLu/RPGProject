@@ -6,7 +6,8 @@ public enum PlayerState
 {
     ControlWalk,
     NormalAttack,
-    SkillAttack
+    SkillAttack,
+    Death
 }
 
 public enum AttackState
@@ -24,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
     public string aniname_normalattack; // 普通攻击的动画
     public string aniname_idle;
     public string aniname_now;
+    public string aniname_death;
     public float time_normalattack; // 普通攻击的时间
     public float rate_normalattack = 1;
     private float timer = 0;
@@ -33,17 +35,31 @@ public class PlayerAttack : MonoBehaviour
     private bool showEffect = false;
     public GameObject effect;
     private PlayerStatus ps;
+    public float miss_rate;
+    public GameObject hudtextPrefab;
+    private GameObject hudtextGo;
+    private HUDText hudtext;
+    private GameObject hudtextFollow;
+    public AudioClip missSound;
+    public GameObject body;
+    private Color normal;
 
     private void Awake()
     {
         move = GetComponent<PlayerMove>();
         ps = GetComponent<PlayerStatus>();
+        hudtextFollow = transform.Find("HUDText").gameObject;
+        normal = body.GetComponent<Renderer>().material.color;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        hudtextGo = NGUITools.AddChild(HUDTextParent._instance.gameObject, hudtextPrefab);
+        hudtext = hudtextGo.GetComponent<HUDText>();
+        UIFollowTarget followTarget = hudtextGo.GetComponent<UIFollowTarget>();
+        followTarget.target = hudtextFollow.transform;
+        followTarget.gameCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -114,11 +130,59 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
+        else if (state == PlayerState.Death)
+        {
+            GetComponent<Animation>().CrossFade(aniname_death);
+        }
     }
 
     public int GetAttack()
     {
         return EquipmentUI._instance.attack + ps.attack + ps.attack_plus;
     }
-    
+
+    public void TakeDamage(int attack)
+    {
+        if (state == PlayerState.Death) return;
+        float def = EquipmentUI._instance.defend + ps.defend + ps.defend_plus;
+        int temp = (int) (attack * ((200 - def) / 200));
+        if (temp < 1)
+        {
+            temp = 1;
+        }
+        float value = Random.Range(0f, 1f);
+        if (value < miss_rate)
+        {
+            // miss
+            AudioSource.PlayClipAtPoint(missSound, transform.position);
+            hudtext.Add("MISS", Color.gray, 1);
+        }
+        else
+        {
+            // 受伤
+            hudtext.Add("-" + temp, Color.red, 1);
+            ps.hp_remain -= temp;
+            StartCoroutine(ShowBodyRed());
+            if (ps.hp_remain <= 0)
+            {
+                ps.hp_remain = 0;
+                state = PlayerState.Death;
+            }
+        }
+        // 更新UI
+        HeadStatusUI._instance.UpdateShow(ps);
+    }
+
+    IEnumerator ShowBodyRed()
+    {
+        body.GetComponent<Renderer>().material.color = Color.red;
+        yield return new WaitForSeconds(1);
+        body.GetComponent<Renderer>().material.color = normal;
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(hudtextGo);
+    }
+
 }
