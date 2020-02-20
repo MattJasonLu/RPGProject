@@ -72,4 +72,18 @@ public class PlayerStatus : MonoBehaviour
         ExpBar._instance.SetValue(this.exp / total_exp);
     }
 
+    public bool TakeMP(int count)
+    {
+        if (mp_remain >= count)
+        {
+            mp_remain -= count;
+            HeadStatusUI._instance.UpdateShow();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

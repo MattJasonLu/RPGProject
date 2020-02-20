@@ -44,12 +44,20 @@ public class PlayerAttack : MonoBehaviour
     public GameObject body;
     private Color normal;
 
+    public GameObject[] efxArray;
+    private Dictionary<string, GameObject> efxDict = new Dictionary<string, GameObject>();
+
     private void Awake()
     {
         move = GetComponent<PlayerMove>();
         ps = GetComponent<PlayerStatus>();
         hudtextFollow = transform.Find("HUDText").gameObject;
         normal = body.GetComponent<Renderer>().material.color;
+
+        foreach (GameObject go in efxArray)
+        {
+            efxDict.Add(go.name, go);
+        }
     }
 
     // Start is called before the first frame update
@@ -170,7 +178,7 @@ public class PlayerAttack : MonoBehaviour
             }
         }
         // 更新UI
-        HeadStatusUI._instance.UpdateShow(ps);
+        HeadStatusUI._instance.UpdateShow();
     }
 
     IEnumerator ShowBodyRed()
@@ -183,6 +191,52 @@ public class PlayerAttack : MonoBehaviour
     private void OnDestroy()
     {
         Destroy(hudtextGo);
+    }
+
+    public void UseSkill(SkillInfo info)
+    {
+        if (ps.heroType == HeroType.Magician)
+        {
+            if (info.applicableRole == ApplicableRole.Swordman)
+            {
+                return;
+            }
+        }
+        if (ps.heroType == HeroType.Swordman)
+        {
+            if (info.applicableRole == ApplicableRole.Magician)
+            {
+                return;
+            }
+        }
+        switch (info.applyType)
+        {
+            case ApplyType.Passive:
+                StartCoroutine(OnPassiveSkillUse(info));
+                break;
+        }
+    }
+
+    IEnumerator OnPassiveSkillUse(SkillInfo info)
+    {
+        state = PlayerState.SkillAttack;
+        GetComponent<Animation>().CrossFade(info.aniname);
+        yield return new WaitForSeconds(info.anitime);
+        state = PlayerState.ControlWalk;
+        int hp = 0, mp = 0;
+        if (info.applyProperty == ApplyProperty.HP)
+        {
+            hp = info.applyValue;
+        }
+        else if (info.applyProperty == ApplyProperty.MP)
+        {
+            mp = info.applyValue;
+        }
+        ps.GetDrug(hp, mp);
+        // 实例化特效
+        GameObject prefab = null;
+        efxDict.TryGetValue(info.efx_name, out prefab);
+        Instantiate(prefab, transform.position, Quaternion.identity);
     }
 
 }

@@ -14101,6 +14101,10 @@ PrefabInstance:
       propertyPath: name
       value: "\u6211\u662F\u5E73\u5E73"
       objectReference: {fileID: 0}
+    - target: {fileID: 1858938700, guid: b41a6091521eb1c4fb29a9c21900afba, type: 3}
+      propertyPath: level
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4143380948091370497, guid: b41a6091521eb1c4fb29a9c21900afba,
         type: 3}
       propertyPath: m_Layer
@@ -14430,6 +14434,13 @@ MonoBehaviour:
   hudtextPrefab: {fileID: 100000, guid: da1dd9b479a126b4b87cee97599c6ed7, type: 3}
   missSound: {fileID: 8300000, guid: e20723268b93d6649bf9a94ed9e7721a, type: 3}
   body: {fileID: 1941259743}
+  efxArray:
+  - {fileID: 100000, guid: d5403793b83de7648b0c33ad35e4d64e, type: 3}
+  - {fileID: 100000, guid: 8e361bb418b94ad4bb22c22c7800a8c2, type: 3}
+  - {fileID: 100010, guid: b8935c0c5eb2164488a7361193f7c2f2, type: 3}
+  - {fileID: 100008, guid: 21596ca0707bc404d897fddd6b68a1ba, type: 3}
+  - {fileID: 100002, guid: 7c16394cbab24a443b83dc7c08602b65, type: 3}
+  - {fileID: 100000, guid: ab3aaa54f2febe14bbee4311665bfdda, type: 3}
 --- !u!114 &1858938701 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1858938701, guid: b41a6091521eb1c4fb29a9c21900afba,

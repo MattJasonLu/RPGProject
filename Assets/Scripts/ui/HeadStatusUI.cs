@@ -26,10 +26,10 @@ public class HeadStatusUI : MonoBehaviour
     private void Start()
     {
         ps = GameObject.FindGameObjectWithTag(Tags.player).GetComponent<PlayerStatus>();
-        UpdateShow(ps);
+        UpdateShow();
     }
 
-    public void UpdateShow(PlayerStatus ps)
+    public void UpdateShow()
     {
         name.text = "Lv." + ps.level + " " + ps.name;
         hpBar.value = (float)ps.hp_remain / (float)ps.hp;

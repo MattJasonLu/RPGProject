@@ -18,6 +18,7 @@ public class ShortCutGrid : MonoBehaviour
     private SkillInfo skillInfo;
     private ObjectInfo objectInfo;
     private PlayerStatus ps;
+    private PlayerAttack pa;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class ShortCutGrid : MonoBehaviour
     void Start()
     {
         ps = GameObject.FindGameObjectWithTag(Tags.player).GetComponent<PlayerStatus>();
+        pa = GameObject.FindGameObjectWithTag(Tags.player).GetComponent<PlayerAttack>();
     }
 
     // Update is called once per frame
@@ -41,7 +43,17 @@ public class ShortCutGrid : MonoBehaviour
             } 
             else if (type == ShortCutType.Skill)
             {
-
+                // 释放技能
+                bool success = ps.TakeMP(skillInfo.mp);
+                if (success)
+                {
+                    // 获得mp后释放该当技能
+                    pa.UseSkill(skillInfo);
+                }
+                else
+                {
+                    
+                }
             }
         }
     }

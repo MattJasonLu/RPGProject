@@ -74,7 +74,7 @@ public class SkillsInfo : MonoBehaviour
                 case "Swordman":
                     info.applicableRole = ApplicableRole.Swordman;
                     break;
-                case "Magican":
+                case "Magician":
                     info.applicableRole = ApplicableRole.Magician;
                     break;
             }
@@ -92,6 +92,9 @@ public class SkillsInfo : MonoBehaviour
                     break;
             }
             info.distance = float.Parse(pa[13]);
+            info.efx_name = pa[14];
+            info.aniname = pa[15];
+            info.anitime = float.Parse(pa[16]);
             skillInfoDict.Add(info.id, info);
         }
     }
@@ -152,4 +155,7 @@ public class SkillInfo
     public int level;
     public ReleaseType releaseType;
     public float distance;
+    public string efx_name;
+    public string aniname;
+    public float anitime = 0;
 }
