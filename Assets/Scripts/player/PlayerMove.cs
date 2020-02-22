@@ -29,7 +29,6 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (attack.state == PlayerState.Death) return;
         if (attack.state == PlayerState.ControlWalk)
         {
             float distance = Vector3.Distance(dir.targetPosition, transform.position);

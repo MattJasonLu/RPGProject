@@ -35,4 +35,9 @@ public class CursorManager : MonoBehaviour
         Cursor.SetCursor(cursor_attack, hotspot, mode);
     }
 
+    public void SetLockTarget()
+    {
+        Cursor.SetCursor(cursor_lockTarget, hotspot, mode);
+    }
+
 }

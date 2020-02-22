@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ public enum AttackState
 
 public class PlayerAttack : MonoBehaviour
 {
+    public static PlayerAttack _instance;
     public PlayerState state = PlayerState.ControlWalk;
     public AttackState attack_state = AttackState.Idle;
     public string aniname_normalattack; // 普通攻击的动画
@@ -46,9 +48,13 @@ public class PlayerAttack : MonoBehaviour
 
     public GameObject[] efxArray;
     private Dictionary<string, GameObject> efxDict = new Dictionary<string, GameObject>();
+    // 是否正在选择目标
+    public bool isLockingTarget = false;
+    private SkillInfo info = null;
 
     private void Awake()
     {
+        _instance = this;
         move = GetComponent<PlayerMove>();
         ps = GetComponent<PlayerStatus>();
         hudtextFollow = transform.Find("HUDText").gameObject;
@@ -70,11 +76,11 @@ public class PlayerAttack : MonoBehaviour
         followTarget.gameCamera = Camera.main;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame吧
     void Update()
     {
         // 点击敌人时
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && state != PlayerState.Death)
         {
             // 做射线检测
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -142,23 +148,27 @@ public class PlayerAttack : MonoBehaviour
         {
             GetComponent<Animation>().CrossFade(aniname_death);
         }
+        if (isLockingTarget && Input.GetMouseButtonDown(0))
+        {
+            OnLockTarget();
+        }
     }
 
     public int GetAttack()
     {
-        return EquipmentUI._instance.attack + ps.attack + ps.attack_plus;
+        return (int)(EquipmentUI._instance.attack + ps.attack + ps.attack_plus);
     }
 
     public void TakeDamage(int attack)
     {
         if (state == PlayerState.Death) return;
         float def = EquipmentUI._instance.defend + ps.defend + ps.defend_plus;
-        int temp = (int) (attack * ((200 - def) / 200));
+        int temp = (int)(attack * ((200 - def) / 200));
         if (temp < 1)
         {
             temp = 1;
         }
-        float value = Random.Range(0f, 1f);
+        float value = UnityEngine.Random.Range(0f, 1f);
         if (value < miss_rate)
         {
             // miss
@@ -175,6 +185,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 ps.hp_remain = 0;
                 state = PlayerState.Death;
+
             }
         }
         // 更新UI
@@ -214,8 +225,18 @@ public class PlayerAttack : MonoBehaviour
             case ApplyType.Passive:
                 StartCoroutine(OnPassiveSkillUse(info));
                 break;
+            case ApplyType.Buff:
+                StartCoroutine(OnBuffSkillUse(info));
+                break;
+            case ApplyType.SingleTarget:
+                OnSingleTargetSkillUse(info);
+                break;
+            case ApplyType.MultiTarget:
+                OnMultiTargetSkillUse(info);
+                break;
         }
     }
+
 
     IEnumerator OnPassiveSkillUse(SkillInfo info)
     {
@@ -239,4 +260,125 @@ public class PlayerAttack : MonoBehaviour
         Instantiate(prefab, transform.position, Quaternion.identity);
     }
 
+    IEnumerator OnBuffSkillUse(SkillInfo info)
+    {
+        state = PlayerState.SkillAttack;
+        GetComponent<Animation>().CrossFade(info.aniname);
+        yield return new WaitForSeconds(info.anitime);
+        state = PlayerState.ControlWalk;
+        // 实例化特效
+        GameObject prefab = null;
+        efxDict.TryGetValue(info.efx_name, out prefab);
+        Instantiate(prefab, transform.position, Quaternion.identity);
+        switch (info.applyProperty)
+        {
+            case ApplyProperty.Attack:
+                ps.attack *= (info.applyValue / 100f);
+                break;
+            case ApplyProperty.AttackSpeed:
+                rate_normalattack *= (info.applyValue / 100f);
+                break;
+            case ApplyProperty.Defend:
+                ps.defend *= (info.applyValue / 100f);
+                break;
+            case ApplyProperty.Speed:
+                move.speed *= (info.applyValue / 100f);
+                break;
+        }
+        // 等待作用时间
+        yield return new WaitForSeconds(info.applyTime);
+        switch (info.applyProperty)
+        {
+            case ApplyProperty.Attack:
+                ps.attack /= (info.applyValue / 100f);
+                break;
+            case ApplyProperty.AttackSpeed:
+                rate_normalattack /= (info.applyValue / 100f);
+                break;
+            case ApplyProperty.Defend:
+                ps.defend /= (info.applyValue / 100f);
+                break;
+            case ApplyProperty.Speed:
+                move.speed /= (info.applyValue / 100f);
+                break;
+        }
+    }
+
+    void OnSingleTargetSkillUse(SkillInfo info)
+    {
+        state = PlayerState.SkillAttack;
+        CursorManager._instance.SetLockTarget();
+        isLockingTarget = true;
+        this.info = info;
+    }
+
+    void OnMultiTargetSkillUse(SkillInfo info)
+    {
+        state = PlayerState.SkillAttack;
+        CursorManager._instance.SetLockTarget();
+        isLockingTarget = true;
+        this.info = info;
+    }
+
+    void OnLockTarget()
+    {
+        isLockingTarget = false;
+        switch (info.applyType)
+        {
+            case ApplyType.SingleTarget:
+                StartCoroutine(OnLockSingleTarget());
+                break;
+            case ApplyType.MultiTarget:
+                StartCoroutine(OnLockMultiTarget());
+                break;
+        }
+    }
+
+    IEnumerator OnLockSingleTarget()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+        bool isCollider = Physics.Raycast(ray, out hitInfo);
+        // 选择了一个敌人
+        if (isCollider && hitInfo.collider.tag == Tags.enemy)
+        {
+            GetComponent<Animation>().CrossFade(info.aniname);
+            yield return new WaitForSeconds(info.anitime);
+            state = PlayerState.ControlWalk;
+            // 实例化特效
+            GameObject prefab = null;
+            efxDict.TryGetValue(info.efx_name, out prefab);
+            Instantiate(prefab, hitInfo.collider.transform.position, Quaternion.identity);
+            hitInfo.collider.GetComponent<WolfBaby>().TakeDamage((int)(GetAttack() * (info.applyValue / 100f)));
+        }
+        else
+        {
+            state = PlayerState.NormalAttack;
+        }
+        CursorManager._instance.SetNormal();
+    }
+
+    
+
+    IEnumerator OnLockMultiTarget()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+        bool isCollider = Physics.Raycast(ray, out hitInfo, 11);
+        if (isCollider)
+        {
+            GetComponent<Animation>().CrossFade(info.aniname);
+            yield return new WaitForSeconds(info.anitime);
+            state = PlayerState.ControlWalk;
+            // 实例化特效
+            GameObject prefab = null;
+            efxDict.TryGetValue(info.efx_name, out prefab);
+            GameObject go = Instantiate(prefab, hitInfo.point + Vector3.up * 0.5f, Quaternion.identity);
+            go.GetComponent<MagicSphere>().attack = GetAttack() * (int)(info.applyValue / 100f);
+        }
+        else
+        {
+            state = PlayerState.ControlWalk;
+        }
+    }
 }

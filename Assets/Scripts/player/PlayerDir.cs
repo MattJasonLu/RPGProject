@@ -23,9 +23,11 @@ public class PlayerDir : MonoBehaviour
     void Update()
     {
         if (playerAttack.state == PlayerState.Death) return;
-        
+        if (playerAttack.isLockingTarget) return;
+        //   && UICamera.hoveredObject == null
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log(UICamera.hoveredObject.name);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
             bool isCollier = Physics.Raycast(ray, out hitInfo);

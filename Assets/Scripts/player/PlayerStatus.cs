@@ -19,9 +19,9 @@ public class PlayerStatus : MonoBehaviour
     public int hp_remain = 100; // 剩余值
     public int mp_remain = 100;
 
-    public int attack = 20;
+    public float attack = 20;
     public int attack_plus = 0;
-    public int defend = 20;
+    public float defend = 20;
     public int defend_plus = 0;
     public int speed = 20;
     public int speed_plus = 0;
@@ -47,6 +47,7 @@ public class PlayerStatus : MonoBehaviour
         {
             mp_remain = this.mp;
         }
+        HeadStatusUI._instance.UpdateShow();
     }
 
     public bool GetPoint(int point = 1)
