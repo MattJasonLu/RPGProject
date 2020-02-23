@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BtnContainer : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class BtnContainer : MonoBehaviour
     {
         PlayerPrefs.SetInt("DataFromSave", 0);
         // 加载我们的选择角色的场景
-
+        SceneManager.LoadScene(1);
     }
 
     // 加载已经保存的游戏

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterCreation : MonoBehaviour
 {
@@ -63,5 +64,6 @@ public class CharacterCreation : MonoBehaviour
         PlayerPrefs.SetInt("selectedCharacterIndex", selectedIndex); 
         PlayerPrefs.SetString("name", nameInput.value);
         // 加载下一个场景
+        SceneManager.LoadScene(2);
     }
 }
